@@ -1,18 +1,6 @@
-System.register(['./handsontable/handsontable'], function(exports_1) {
-    function exportStar_1(m) {
-        var exports = {};
-        for(var n in m) {
-            if (n !== "default") exports[n] = m[n];
-        }
-        exports_1(exports);
-    }
-    return {
-        setters:[
-            function (handsontable_1_1) {
-                exportStar_1(handsontable_1_1);
-            }],
-        execute: function() {
-        }
-    }
-});
+"use strict";
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+__export(require('./handsontable/handsontable'));
 //# sourceMappingURL=index.js.map
