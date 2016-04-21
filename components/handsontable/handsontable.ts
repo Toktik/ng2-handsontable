@@ -19,7 +19,8 @@ let eventNames:Array<string> = ['afterCellMetaReset', 'afterChange',
 
 @Component({
   selector: 'hot-table',
-  outputs: eventNames
+  outputs: eventNames,
+  template: ``
 })
 export class HotTable implements OnInit, OnDestroy {
   private inst:any;

@@ -114,7 +114,8 @@ var HotTable = (function () {
     HotTable = __decorate([
         core_1.Component({
             selector: 'hot-table',
-            outputs: eventNames
+            outputs: eventNames,
+            template: ""
         }), 
         __metadata('design:paramtypes', [core_1.ElementRef])
     ], HotTable);
