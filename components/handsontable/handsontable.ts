@@ -1,12 +1,25 @@
-import {OnInit, OnDestroy, Component, EventEmitter, ElementRef, Input} from 'angular2/core';
+import {OnInit, OnDestroy, Component, EventEmitter, ElementRef, Input, Output} from 'angular2/core';
 
 declare var Handsontable:Function;
 
-
+let eventNames:Array<string> = ['afterCellMetaReset', 'afterChange',
+  'afterCreateCol', 'afterCreateRow', 'afterDeselect',
+  'afterDestroy', 'afterDocumentKeyDown', 'afterGetCellMeta', 'afterGetColHeader', 'afterGetRowHeader',
+  'afterInit', 'afterIsMultipleSelectionCheck', 'afterLoadData',
+  'afterMomentumScroll', 'afterOnCellCornerMouseDown',
+  'afterOnCellMouseDown', 'afterOnCellMouseOver', 'afterRemoveCol', 'afterRemoveRow', 'afterRender',
+  'afterRenderer', 'afterScrollHorizontally', 'afterScrollVertically',
+  'afterSelection', 'afterSelectionByProp',
+  'afterSelectionEnd', 'afterSelectionEndByProp', 'afterSetCellMeta', 'afterUpdateSettings', 'afterValidate',
+  'beforeAutofill', 'beforeCellAlignment', 'beforeChange', 'beforeChangeRender', 'beforeDrawBorders',
+  'beforeGetCellMeta', 'beforeInit', 'beforeInitWalkontable', 'beforeKeyDown', 'beforeOnCellMouseDown',
+  'beforeRemoveCol', 'beforeRemoveRow', 'beforeRender', 'beforeSetRangeEnd', 'beforeTouchScroll',
+  'beforeValidate', 'construct', 'init', 'modifyCol', 'modifyColWidth', 'modifyRow', 'modifyRowHeight',
+  'persistentStateLoad', 'persistentStateReset', 'persistentStateSave'];
 
 @Component({
   selector: 'hot-table',
-  outputs:this.eventNames
+  outputs: eventNames
 })
 export class HotTable implements OnInit, OnDestroy {
   private inst:any;
@@ -18,24 +31,9 @@ export class HotTable implements OnInit, OnDestroy {
   @Input() colWidths:Array<number>;
   @Input() options:any;
 
-  eventNames:Array<string> = ['afterCellMetaReset', 'afterChange',
-    'afterCreateCol', 'afterCreateRow', 'afterDeselect',
-    'afterDestroy', 'afterDocumentKeyDown', 'afterGetCellMeta', 'afterGetColHeader', 'afterGetRowHeader',
-    'afterInit', 'afterIsMultipleSelectionCheck', 'afterLoadData',
-    'afterMomentumScroll', 'afterOnCellCornerMouseDown',
-    'afterOnCellMouseDown', 'afterOnCellMouseOver', 'afterRemoveCol', 'afterRemoveRow', 'afterRender',
-    'afterRenderer', 'afterScrollHorizontally', 'afterScrollVertically',
-    'afterSelection', 'afterSelectionByProp',
-    'afterSelectionEnd', 'afterSelectionEndByProp', 'afterSetCellMeta', 'afterUpdateSettings', 'afterValidate',
-    'beforeAutofill', 'beforeCellAlignment', 'beforeChange', 'beforeChangeRender', 'beforeDrawBorders',
-    'beforeGetCellMeta', 'beforeInit', 'beforeInitWalkontable', 'beforeKeyDown', 'beforeOnCellMouseDown',
-    'beforeRemoveCol', 'beforeRemoveRow', 'beforeRender', 'beforeSetRangeEnd', 'beforeTouchScroll',
-    'beforeValidate', 'construct', 'init', 'modifyCol', 'modifyColWidth', 'modifyRow', 'modifyRowHeight',
-    'persistentStateLoad', 'persistentStateReset', 'persistentStateSave'];
-
   constructor(private element:ElementRef) {
     // fill events dynamically
-    this.eventNames.forEach(eventName => {
+    eventNames.forEach(eventName => {
       this[eventName] = new EventEmitter();
     });
   }
@@ -75,7 +73,7 @@ export class HotTable implements OnInit, OnDestroy {
       data: this.data
     };
 
-    this.eventNames.forEach(eventName => {
+    eventNames.forEach(eventName => {
       htOptions[eventName] = data => {
         this[eventName].next(data);
       };

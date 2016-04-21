@@ -9,26 +9,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('angular2/core');
+var eventNames = ['afterCellMetaReset', 'afterChange',
+    'afterCreateCol', 'afterCreateRow', 'afterDeselect',
+    'afterDestroy', 'afterDocumentKeyDown', 'afterGetCellMeta', 'afterGetColHeader', 'afterGetRowHeader',
+    'afterInit', 'afterIsMultipleSelectionCheck', 'afterLoadData',
+    'afterMomentumScroll', 'afterOnCellCornerMouseDown',
+    'afterOnCellMouseDown', 'afterOnCellMouseOver', 'afterRemoveCol', 'afterRemoveRow', 'afterRender',
+    'afterRenderer', 'afterScrollHorizontally', 'afterScrollVertically',
+    'afterSelection', 'afterSelectionByProp',
+    'afterSelectionEnd', 'afterSelectionEndByProp', 'afterSetCellMeta', 'afterUpdateSettings', 'afterValidate',
+    'beforeAutofill', 'beforeCellAlignment', 'beforeChange', 'beforeChangeRender', 'beforeDrawBorders',
+    'beforeGetCellMeta', 'beforeInit', 'beforeInitWalkontable', 'beforeKeyDown', 'beforeOnCellMouseDown',
+    'beforeRemoveCol', 'beforeRemoveRow', 'beforeRender', 'beforeSetRangeEnd', 'beforeTouchScroll',
+    'beforeValidate', 'construct', 'init', 'modifyCol', 'modifyColWidth', 'modifyRow', 'modifyRowHeight',
+    'persistentStateLoad', 'persistentStateReset', 'persistentStateSave'];
 var HotTable = (function () {
     function HotTable(element) {
         var _this = this;
         this.element = element;
         this.data = [];
-        this.eventNames = ['afterCellMetaReset', 'afterChange',
-            'afterCreateCol', 'afterCreateRow', 'afterDeselect',
-            'afterDestroy', 'afterDocumentKeyDown', 'afterGetCellMeta', 'afterGetColHeader', 'afterGetRowHeader',
-            'afterInit', 'afterIsMultipleSelectionCheck', 'afterLoadData',
-            'afterMomentumScroll', 'afterOnCellCornerMouseDown',
-            'afterOnCellMouseDown', 'afterOnCellMouseOver', 'afterRemoveCol', 'afterRemoveRow', 'afterRender',
-            'afterRenderer', 'afterScrollHorizontally', 'afterScrollVertically',
-            'afterSelection', 'afterSelectionByProp',
-            'afterSelectionEnd', 'afterSelectionEndByProp', 'afterSetCellMeta', 'afterUpdateSettings', 'afterValidate',
-            'beforeAutofill', 'beforeCellAlignment', 'beforeChange', 'beforeChangeRender', 'beforeDrawBorders',
-            'beforeGetCellMeta', 'beforeInit', 'beforeInitWalkontable', 'beforeKeyDown', 'beforeOnCellMouseDown',
-            'beforeRemoveCol', 'beforeRemoveRow', 'beforeRender', 'beforeSetRangeEnd', 'beforeTouchScroll',
-            'beforeValidate', 'construct', 'init', 'modifyCol', 'modifyColWidth', 'modifyRow', 'modifyRowHeight',
-            'persistentStateLoad', 'persistentStateReset', 'persistentStateSave'];
-        this.eventNames.forEach(function (eventName) {
+        eventNames.forEach(function (eventName) {
             _this[eventName] = new core_1.EventEmitter();
         });
     }
@@ -61,7 +61,7 @@ var HotTable = (function () {
         var htOptions = {
             data: this.data
         };
-        this.eventNames.forEach(function (eventName) {
+        eventNames.forEach(function (eventName) {
             htOptions[eventName] = function (data) {
                 _this[eventName].next(data);
             };
@@ -114,7 +114,7 @@ var HotTable = (function () {
     HotTable = __decorate([
         core_1.Component({
             selector: 'hot-table',
-            outputs: this.eventNames
+            outputs: eventNames
         }), 
         __metadata('design:paramtypes', [core_1.ElementRef])
     ], HotTable);

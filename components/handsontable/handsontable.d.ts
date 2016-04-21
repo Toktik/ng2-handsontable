@@ -8,7 +8,6 @@ export declare class HotTable implements OnInit, OnDestroy {
     columns: Array<any>;
     colWidths: Array<number>;
     options: any;
-    eventNames: Array<string>;
     constructor(element: ElementRef);
     parseAutoComplete(column: any, dataSet: any): void;
     ngOnInit(): void;
