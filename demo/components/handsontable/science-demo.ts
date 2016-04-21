@@ -1,9 +1,7 @@
 /// <reference path="../../../tsd.d.ts" />
 
-import {
-  Component, View,
-  CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass
-} from 'angular2/angular2';
+import {Component} from 'angular2/core';
+import {NgClass, CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 
 import {handsontable} from '../../../components/index';
 import {getScienceData} from './data';
@@ -24,7 +22,7 @@ function updateHeatmap(change, source) {
   } else {
     heatmap = [];
 
-    for (var i = 1, colCount = this.countCols(); i < colCount; i++) {
+    for (let i = 1, colCount = this.countCols(); i < colCount; i++) {
       heatmap[i] = generateHeatmapData(this, i);
     }
   }
@@ -54,10 +52,8 @@ function heatmapRenderer(instance, td, row, col, prop, value, cellProperties) {
 }
 
 @Component({
-  selector: 'science-demo'
-})
-@View({
-  template: template,
+  selector: 'science-demo',
+  templateUrl: template,
   directives: [handsontable, NgClass, CORE_DIRECTIVES, FORM_DIRECTIVES]
 })
 export class ScienceDemo {
