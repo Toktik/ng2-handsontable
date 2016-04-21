@@ -10,10 +10,11 @@
     "start": "npm run server",
     "test": "gulp lint"
   },
-  "main": "dist/index.js",
+  "main": "ng2-file-upload.js",
   "files": [
     "dist",
-    "components"
+    "components",
+    "ng2-handsontable.*"
   ],
   "keywords": [
     "angular2",

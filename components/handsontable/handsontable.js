@@ -1,6 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
+System.register(['angular2/core'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -45,14 +43,14 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 HotTable.prototype.parseAutoComplete = function (column, dataSet) {
                     var inst = this.inst;
                     if (typeof column.source === 'string') {
-                        var relatedField_1 = column.source;
+                        var relatedField = column.source;
                         column.source = function (query, process) {
                             var row = inst.getSelected()[0];
                             var data = dataSet[row];
                             if (!data) {
                                 return;
                             }
-                            var fieldParts = relatedField_1.split('.');
+                            var fieldParts = relatedField.split('.');
                             var o = data;
                             for (var i = 0; i < fieldParts.length; i++) {
                                 o = o[fieldParts[i]];
@@ -129,7 +127,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                     __metadata('design:paramtypes', [core_1.ElementRef])
                 ], HotTable);
                 return HotTable;
-            }());
+            })();
             exports_1("HotTable", HotTable);
             exports_1("handsontable", handsontable = [HotTable]);
         }
