@@ -14,10 +14,10 @@ npm-debug.log
 /build
 /dist
 
-/demo/**/*.js
-/demo/**/*.js.map
-!/demo/external/**/*.js
-/components/**/*.js
-/components/**/*.js.map
+#/demo/**/*.js
+#/demo/**/*.js.map
+#!/demo/external/**/*.js
+#/components/**/*.js
+#/components/**/*.js.map
 
 /logs
